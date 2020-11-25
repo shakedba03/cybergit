@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>UPDATE</title>
+</head>
+{% extends 'base.html' %}
+{% block head %}
+
+{% endblock %}
+<body>
+    {% block body %} 
+    <div class="content">
+        <h1>Update A Task</h1>
+        <p>You are about to update the following task: {{selected_task.content}}</p>
+        <p>If this is the task you wish to change, please fill this form.</p>
+        <div>
+            <form action="/update_task/{{selected_task}}" method="POST">
+                <input type="text" name="content_update" id="content">
+                <input type="submit" value="UPDATE TASK">
+            </form>
+        </div>
+        <a href ="{{url_for('home')}}">home</a>
+        
+    </div>     
+    {% endblock %}
+</body>
+</html>

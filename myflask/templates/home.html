@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>HOME</title>
+</head>
+{% extends 'base.html' %}
+{% block head %}
+
+{% endblock %}
+<body>
+    {% block body %} 
+    <div class="content">
+        <h1>My Todo List</h1>
+        <table border="2px">
+            <tr>
+                <th>Task</th>
+                <th>Added</th>
+                <th>Action</th>
+            </tr>
+            {% for task in all_tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date }}</td>
+                <td>
+                    <a href="/delete_task/{{task.id}}">Delete</a>
+                    <br>
+                    <a href="/update_task/{{task.id}}">Update</a>
+                </td>
+            </tr>
+            {% endfor %}
+            </table>
+        
+            <div>
+                <form action="/" method="POST">
+                    <input type="text" name="content" id="content">
+                    <input type="submit" value="ADD TASK">
+                </form>
+            </div>
+    </div>     
+    {% endblock %}
+</body>
+</html>
